@@ -21,9 +21,9 @@ class Button extends Component {
 export default Button;
 
 const TheButton = styled.button`
-    background: #123427;
+    background: #E5722A;
     padding: 10px;
-    border: 2px solid #123427;;
+    border: 2px solid #E5722A;
     border-radius: 3px;
     color: white;
     font-weight: 700;

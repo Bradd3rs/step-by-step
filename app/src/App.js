@@ -19,6 +19,7 @@ class App extends Component {
     this.previousStep = this.previousStep.bind(this);
     this.makeSelection = this.makeSelection.bind(this);
     this.showStats = this.showStats.bind(this);
+    this.reset = this.reset.bind(this);
   }
   componentDidMount() {
     // let selected = this.state.selected;
@@ -38,6 +39,15 @@ class App extends Component {
     this.setState(() => ({ showStats: true }));
     console.log('show stats', this.state.showStats)
   }
+  reset() {
+    this.setState(() => (
+      { 
+        showStats: false ,
+        step: 0,
+        selected: null
+      }
+    ));
+  }
   nextStep() {
     if(this.state.step < this.state.totalSteps) {
       this.setState((prevState) => ({ step: prevState.step + 1 }));
@@ -50,18 +60,26 @@ class App extends Component {
     let step = this.state.step;
     return (
       <Container>
-        <Header step={step} />
+        <Header 
+          step={step} 
+          selected={this.state.selected}
+          showStats={this.state.showStats}
+          totalSteps={this.state.totalSteps} />
         <Screen 
           content={this.state.content} 
           step={step}
-          makeSelection={this.makeSelection}  />
+          makeSelection={this.makeSelection}
+          selected={this.state.selected}
+          showStats={this.state.showStats}  />
         <Controls 
           step={step} 
+          reset={this.reset}
           totalSteps={this.state.totalSteps}
           nextStep={this.nextStep} 
           previousStep={this.previousStep} 
           selected={this.state.selected}
-          showStats={this.showStats} />
+          showStats={this.showStats}
+          showStatsScreen={this.state.showStats} />
       </Container>
     );
   }
@@ -76,4 +94,5 @@ const Container = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 `;

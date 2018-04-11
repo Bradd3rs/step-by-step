@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Header = ({ step }) => (
+const Header = ({ step, selected, totalSteps, showStats }) => (
     <Container>
         {
             step ? 
-                <h1>Step {step}</h1>
+                showStats ? <h1>Stats</h1> : <h1>{selected.toUpperCase()} step {step} of {totalSteps}</h1>
             :
-                <h1>Welcome!</h1> 
+                <h1>Select brew</h1> 
         }
     </Container>
 );
@@ -19,10 +19,10 @@ const Container = styled.header`
     left: 0;
     right: 0;
     top: 0;
-    background: #123427;
+    color: #123427;
     padding: 10px;
-    color: white;
     text-align: center;
+    border-bottom: 3px solid #123427;
 
     h1 {
         font-weight: 300;

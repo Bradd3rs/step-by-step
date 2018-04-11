@@ -9,6 +9,7 @@ class Controls extends Component {
     this.nextStep = this.nextStep.bind(this);
     this.previousStep = this.previousStep.bind(this);
     this.finish = this.finish.bind(this);
+    this.reset = this.reset.bind(this);
   }
   nextStep() {
       this.props.nextStep();
@@ -19,13 +20,19 @@ class Controls extends Component {
   finish() {
     this.props.showStats();
   }
+  reset() {
+    this.props.reset();
+  }
   render() {
     return (
       <Container>
         {
           this.props.step ? 
             this.props.step === (this.props.totalSteps) ?
-              <Button onClick={this.finish} text="Finish" type="finish" />
+              (this.props.showStatsScreen ? 
+                <Button onClick={this.reset} text="Back to start" type="start" /> 
+                : 
+                <Button onClick={this.finish} text="Finish" type="finish" />)
               :
               <StepButtons>
                 <Button onClick={this.previousStep} text="Previous" type="previous" />
@@ -43,7 +50,7 @@ export default Controls;
 
 const Container = styled.section`
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   width: 100%;
   max-width: 600px;
   display: flex;
