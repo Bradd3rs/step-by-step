@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Screen from './components/Screen';
 import Controls from './components/Controls';
-import data from './methods/method-1';
+import data from './methods/methods';
 import styled from 'styled-components';
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
       step: 0,
       totalSteps: null,
       selected: null,
-      content: [],
+      content: {},
       showStats: false
     }
     this.nextStep = this.nextStep.bind(this);
@@ -21,16 +21,18 @@ class App extends Component {
     this.showStats = this.showStats.bind(this);
   }
   componentDidMount() {
-    this.setState(() => ({ content: data }));
+    // let selected = this.state.selected;
+    // this.setState(() => ({ content: data }));
   }
   makeSelection(selected) {
     this.setState(() => (
       { 
         selected: selected,
-        totalSteps: data.length
+        totalSteps: data[selected].length,
+        content: data[selected]
       }
     ));
-    console.log('selection', selected);
+    console.log('selection', this.state.content);
   }
   showStats() {
     this.setState(() => ({ showStats: true }));

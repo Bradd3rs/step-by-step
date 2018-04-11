@@ -28,8 +28,8 @@ class Controls extends Component {
               <Button onClick={this.finish} text="Finish" type="finish" />
               :
               <StepButtons>
-                <Button onClick={this.previousStep} text="Previous Step" type="previous" />
-                <Button onClick={this.nextStep} text="Next Step" type="next" />
+                <Button onClick={this.previousStep} text="Previous" type="previous" />
+                <Button onClick={this.nextStep} text="Next" type="next" />
               </StepButtons>
             :
             <Button onClick={this.nextStep} text="Start" type="start" disabled={!this.props.selected} />

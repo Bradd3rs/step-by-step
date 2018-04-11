@@ -16,8 +16,8 @@ class Selection extends Component {
     render() {
         return (
             <Container>
-                <div className={this.state.selected === 1 ? 'selected' : ''} onClick={() => this.handleSelection(1)}>Selection 1</div>
-                <div className={this.state.selected === 2 ? 'selected' : ''} onClick={() => this.handleSelection(2)}>Selection 2</div>
+                <div className={this.state.selected ==='ipa' ? 'selected' : ''} onClick={() => this.handleSelection('ipa')}>Selection 1</div>
+                <div className={this.state.selected === 'lager' ? 'selected' : ''} onClick={() => this.handleSelection('lager')}>Selection 2</div>
             </Container>
         )
     }
